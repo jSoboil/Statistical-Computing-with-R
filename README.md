@@ -1,5 +1,5 @@
 # Statistical Computing with R
-Computational statistics and statistical computing are two areas within statistics that may be broadly described as computational, graphical, and numerical approaches to solving statistical problems. Statistical Computing with R, Second Edition covers the traditional core material of these areas with an emphasis on using the R language via an examples-based approach. The new edition is up-to-date with the many advances that have been made in recent years.
+Computational statistics and statistical computing are two areas within statistics that may be broadly described as computational, graphical, and numerical approaches to solving statistical problems. [Statistical Computing with R](https://www.amazon.com/Statistical-Computing-Second-Chapman-Hall/dp/1466553324), Second Edition covers the traditional core material of these areas with an emphasis on using the R language via an examples-based approach. The new edition is up-to-date with the many advances that have been made in recent years.
 
 ---
 
