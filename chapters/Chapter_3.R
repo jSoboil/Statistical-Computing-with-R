@@ -47,9 +47,11 @@ lines(y, 3 * y ^ 2) # density curve f(x)
 # U and 1 - U have the same distribution and it is simpler to set 
 # x = -(1/delta) * log(u). To generate a random sample of size n with parameter
 # lambda:
-lambda <- 0.1 # set lambda (mean) constant, i.e. E[X] = 1 / lambda
-x <- -log(runif(n)) / lambda
+lambda <- 0.5 # set lambda (mean) constant, i.e. E[X] = 1 / lambda
+x <- (-log(runif(n)) / lambda)
 hist(x, probability = TRUE, main = expression(
- f(x) == lambda * e ^ {-lambda * e}))
+ f(x) == lambda * e ^ {-lambda * x}))
+y <- seq(min(x), max(x), 0.1)
+lines(y, lambda * exp(-lambda * y)) # density curve f(x) 
 
 ## Inverse Transform Method,  Discrete Case --------------------------------
