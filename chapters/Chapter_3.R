@@ -162,6 +162,7 @@ se <- sqrt(p * (1 - p) / n)
 # sample size 1000. In the following simulation below, the counter j for 
 # iterations is not necessary, but included to record how many iterations were
 # actually needed to generate the 1000 beta variates:
+set.seed(41513)
 n <- 1000
 k <- 0
 j <- 0 # counter for accepted samples
@@ -191,25 +192,156 @@ se <- sqrt(p * (1 - p)) / (n * dbeta(Q, 2, 2) ^ 2)
 round(rbind(Q_hat, Q, se), 3)
 
 ## Transformation Methods --------------------------------------------------
+set.seed(123)
+n <- 1000
+a <- 3
+b <- 2
+u <- rgamma(n, shape = a, rate = 1)
+v <- rgamma(n, shape = b, rate = 1)
+x <- u / (u + v)
+q <- qbeta(ppoints(n), a, b)
+qqplot(q, x, cex = 0.25, xlab = "Beta(3, 2)", ylab = "Sample")
+abline(0, 1)
 
+## Sums & Mixtures ---------------------------------------------------------
+# Sums and mixtures of random variables are special types of transformations.
 
+### Convolutions ------------------------------------------------------------
+# Let X_1, ..., X_n be i.i.d with X_j \sim X, and let S = X_1 + ... + X_n. The
+# distribution function of the sum S is called the n-fold convolution of X and 
+# denoted F^{star(n)}_X. It is straightforward to simulate a convolution by directly
+# generating X_1, ..., X_n and computing the sum.
 
+# Several distributions are related by convolution. If \nu > 0 is an integer, 
+# the \chi^{2} distribution with \nu degrees of freedom is the convolution of
+# \nu i.i.d squared standard normal variables. The negative binomial distribution
+# NegBin(r, p) is the convolution of r i.i.d Geom(p) r.v's. The convolution of r
+# independent Exp(\lambda) r.v's has the Gamma(r, \lambda) distribution.
 
+# In R it is of course easier to generate r.v's from these distributions using
+# the rchisq, rgeom, and rbinom functions. Nevertheless, these examples 
+# illustrate a general method that can be applied whenever distributions are
+# related by convolutions.
 
+#### Example: \chi^{2}
+# This example generates a \chi^{2}(\nu) random variable as the convolution of 
+# \nu squared normals. If Z_1, ..., Z_{\nu} are i.i.d N(0, 1) r.v's, then V = 
+# Z^{2}_1 + ... + Z^{2}_2 has the \chi^{2}(\nu) distribution. To generate a
+# random sample of size n from \chi^{2}(\nu), we:
 
+# 1. Fill an n \times \nu matrix with n\nu random N(0, 1) variates
+# 2. Square each entry in the matrix(1)
+# 3. Compute the row sums of the squared normals. Each row sum is one random 
+# observation from the \chi^{2}(\nu) distribution
+# 4. Deliver the vector of row sums.
 
+# We develop an example with n = 1000 and \nu = 2 degrees of freedom below.
+set.seed(4213)
+n <- 1000
+nu <- 2
+X <- matrix(rnorm(n = n*nu), nrow = n, ncol = nu)^2 # matrix of sq. normals
+# Then sum the sq. normals across each row of matrix:
+# method 1
+y_1 <- rowSums(X)
+# method 2:
+y_2 <- apply(X, MARGIN = 1, FUN = sum)
+identical(y_1, y_2) # test if same... doesn't matter which one is used
 
+# A \chi^{2}(\nu) random variable has mean \nu and variance 2\nu. The samples we
+# have generated match this closely with negligible error...
+mean(y_1)
+mean(y_1^2)
 
+### Mixtures ----------------------------------------------------------------
+# A random variable X has a discrete mixture if the distribution of X is a 
+# weighted sum F_X(x) = \sum \theta_i F_X(x) for some sequence of random 
+# variables X_1, X_2, .... and \theta_i > 0 such that \sum_i \theta_i = 1. The
+# constants \theta_i are called the 'mixing' weights or 'mixing' probabilities.
+# Although the notation is similar for sums and mixtures, the distributions 
+# represented are different.
 
+# A r.v X is a continuous mixture if the distribution of X is 
+# F_X(x) = \int_{\inf}^{-\inf} F_{X\mid Y = y}(x) f_Y(y) for a family 
+# X \mid Y = y indexed by the real numbers y and weighting function f_Y such 
+# that \int_{\inf}^{-\inf} F_{X\mid Y = y}(x) f_Y(y) dy = 1, i.e. it is a valid 
+# cumulative density.
 
+# Let's compare the methods for simulation of a convolution and a mixture of
+# normal variables. Suppose X_1 \sim N(0, 1) and X_2 \sim N(3, 1) are 
+# independent. The notation S = X_1 + X_2 denotes the *convolution* of X_1 and
+# X_2. The distribution of S is normal with mean \mu_1 + \mu_2 = 3 and variance
+# \sigma_1^{2} + \sigma_2^{2} = 2. Hence, to simulate the convolution, we must:
 
+# 1. Generate x_1 \sim N(0, 1)
+# 2. Generate x_2 \sim N(3, 1)
+# 3. Deliver s = x_1 + x_2
 
+# We can also define a 50% normal *mixture* X, denoted F_X(x) = 0.5 * F_{X_1}(x) 
+# + 0.5 * F_{X_2}(x). Unlike the convolution, the distribution of the mixture X
+# is distinctly *non-normal*; it is bimodal. Hence, to simulate the mixture, we
+# must:
 
+# 1. Generate an integer k \in \{1, 2\}, where P(1) = P(2) = 0.5
+# 2. If k = 1 deliver random x from N(0, 1) else if k = 2 deliver random from
+# N(3, 1)
 
+#### Example: Convolutions and mixtures
+# Let X_1 \sim Gamma(2, 2) and X_2 \sim Gamma(2, 4) be independent. Let's see 
+# the visual difference between the convolution S = X_1 + X_2 and mixture 
+# F_X(x) = 0.5 * F_{X_1}(x) + 0.5 * F_{X_2}(x):
+n <- 1000
+x_1 <- rgamma(n, 2, 2)
+x_2 <- rgamma(n, 2, 4)
+s <- x_1 + x_2 # convolution
+u <- runif(n)
+k <- as.integer(u > 0.5) # vector of 0's and 1's (binary logic)
+x <- k * x_1 + (1 - k) * x_2 # the mixture
+# Plot:
+par(mfcol = c(1, 2))
+hist(s, probability = TRUE, xlim = c(0, 5), ylim = c(0, 1))
+hist(x, probability = TRUE, xlim = c(0, 5), ylim = c(0, 1))
+par(mfcol = c(1, 1)) # restore previous setting
 
+#### Example: Mixture of several gamma distributions
+# Here there are several components to the mixture and the mixing weights are 
+# not uniform. The mixture is
 
+# F_X = \sum_{i = 1}^5 \theta_j F_{X_j}
 
+# where X_j \sim Gamma(r = 3, \lambda_{j} = \frac{1}{j}) are independent and the
+# mixing probabilities are \theta_j = \frac{j}{15}, j = 1, ..., 5.
 
+# To simulate one random variate from the mixture F_X:
 
+# 1. Generate an integer k \sim \{1, 2, 3, 4, 5\}, where P(k) = \theta_k, 
+# k = 1, ..., 5
+# 2. Deliver a random Gamma(r, \lambda_{k}) variate
 
+# Hence, to generate sample size n, steps 1 and 2 are repeated n times. Since
+# for loops can be costly in R, we can translate the above into a vectorised
+# approach. So then, we
 
+# 1. Generate a random sample k_1, ..., k_n of integers in a vector k, where
+# P(k) = \theta_k, k = 1, ..., 5. Then k[i] indicates which of the the five 
+# gamma distributions will be sampled to get the ith element of the sample.
+# 2. Set rate equal to the length n vector \lambda = (\lambda_k)
+# 3. Generate a gamme sample size n, with shape r and rate vector rate
+
+# Thus, and efficient way to implement this in R is shown below:
+n <- 5000
+k <- sample(1:5, size = n, replace = TRUE, prob = (1:5) / 15)
+rate <- 1 / k
+x <- rgamma(n = n, shape = 3, rate = rate)
+# Plot the density of the mixture with densities of the compoenents...
+plot(x = density(x),
+     xlim = c(0, 40), ylim = c(0, 0.3), 
+     lwd = 3, xlab = "x", main = "Mixture (thick) of Independent Gammas (thin)")
+for (i in 1:5) {
+ lines(density(rgamma(n = n, shape = 3, rate = 1/i)))
+}
+# Thick line is the final mixture; thin lines are the density of each X_j.
+
+# The rest of the examples are repetitions of the same theme. Onto the next 
+# section!
+
+# Multivariate Distributions ----------------------------------------------
