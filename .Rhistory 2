@@ -1,0 +1,512 @@
+lines(y, lambda * exp(-lambda * exp(lambda))) # density curve f(x)
+hist(x, probability = TRUE, main = expression(
+f(x) == lambda * e ^ {-lambda * e}))
+lines(y, lambda * exp(-lambda * exp(lambda))) # density curve f(x)
+y
+hist(x, probability = TRUE, main = expression(
+f(x) == lambda * e ^ {-lambda * e}))
+hist(x, probability = TRUE, main = expression(
+f(x) == lambda * e ^ {-lambda * x}))
+hist(x, probability = TRUE, main = expression(
+f(x) == lambda * e ^ {-lambda * *x*}))
+hist(x, probability = TRUE, main = expression(
+f(x) == lambda * e ^ {-lambda * x}))
+hist(x, probability = TRUE, main = expression(f(x) == 3 * x ^ 2)) # density hist of sample
+y <- seq(0, 1, 0.1)
+# Here F_X(x) = 3 for 0 < x < 1, and F_X^1(u) = u^{1/3}. First we generate all n
+# required random uniform numbers as vector u. Then u^{1/3} is a vector of length
+# n containing the sample x_1, ... , x_n.
+n <- 1000
+u <- runif(n)
+x <- u ^ (1 / 3)
+hist(x, probability = TRUE, main = expression(f(x) == 3 * x ^ 2)) # density hist of sample
+y <- seq(0, 1, 0.1)
+lines(y, 3 * y ^ 2) # density curve f(x)
+# If X ~ Exp(delta), then for x > 0 the cdf of X is F_X(x) = 1 - e^(-delta * x).
+# The inverse transformation us F_X^-1(u) = -(1/delta) * log(1 - u). Note that
+# U and 1 - U have the same distribution and it is simpler to set
+# x = -(1/delta) * log(u). To generate a random sample of size n with parameter
+# lambda:
+lambda <- 0.1 # set lambda (mean) constant, i.e. E[X] = 1 / lambda
+x <- -log(runif(n)) / lambda
+hist(x, probability = TRUE, main = expression(
+f(x) == lambda * e ^ {-lambda * x}))
+# If X ~ Exp(delta), then for x > 0 the cdf of X is F_X(x) = 1 - e^(-delta * x).
+# The inverse transformation us F_X^-1(u) = -(1/delta) * log(1 - u). Note that
+# U and 1 - U have the same distribution and it is simpler to set
+# x = -(1/delta) * log(u). To generate a random sample of size n with parameter
+# lambda:
+lambda <- 0.1 # set lambda (mean) constant, i.e. E[X] = 1 / lambda
+x <- -log(runif(n)) / lambda
+hist(x, probability = TRUE, main = expression(
+f(x) == lambda * e ^ {-lambda * x}))
+lines(y, lambda * exp(-lambda * x)) # density curve f(x)
+y
+seq(0, 70, 0.1)
+y <- seq(0, 70, 0.1)
+lines(y, lambda * exp(-lambda * x)) # density curve f(x)
+lambda
+lambda
+x
+y <- seq(min(x), max(x), 0.1)
+lines(y, lambda * exp(-lambda * x)) # density curve f(x)
+y <- seq(min(x), max(x))
+lines(y, lambda * exp(-lambda * x)) # density curve f(x)
+y <- seq(min(x), max(x), 1)
+lines(y, lambda * exp(-lambda * x)) # density curve f(x)
+y <- seq(min(x), max(x), 2)
+y <- seq(min(x), max(x), 10)
+lines(y, lambda * exp(-lambda * x)) # density curve f(x)
+y <- seq(10, 75, 10)
+lines(y, lambda * exp(-lambda * x)) # density curve f(x)
+max(x)
+y <- seq(min(x), max(x), 10)
+lines(y, lambda * exp(-lambda * x)) # density curve f(x)
+y <- seq(min(x), max(x), 1)
+lines(y, lambda * exp(-lambda * x)) # density curve f(x)
+lines(y, (lambda * exp(-lambda * x))) # density curve f(x)
+y <- seq(0, max(x), 1)
+lines(y, (lambda * exp(-lambda * x))) # density curve f(x)
+y
+y <- seq(0, max(x), 0.5)
+lines(y, (lambda * exp(-lambda * x))) # density curve f(x)
+y
+x
+y <- seq(0, max(x), 0.01)
+lines(y, (lambda * exp(-lambda * x))) # density curve f(x)
+y
+y <- seq(0, max(x), 0.1)
+lines(y, (lambda * exp(-lambda * x))) # density curve f(x)
+y
+y <- seq(0, max(x), 0.09)
+y
+y <- seq(0, max(x), 0.095)
+y
+y <- seq(0, max(x), 0.08)
+y
+lines(y, (lambda * exp(-lambda * x))) # density curve f(x)
+y <- y[1:1000]
+lines(y, (lambda * exp(-lambda * x))) # density curve f(x)
+lambda <- 0.1 # set lambda (mean) constant, i.e. E[X] = 1 / lambda
+x <- -log(runif(n)) / lambda
+hist(x, probability = TRUE, main = expression(
+f(x) == lambda * e ^ {-lambda * x}))
+y <- seq(0, max(x), 0.08)
+y <- y[1:1000]
+lines(y, (lambda * exp(-lambda * x)))
+y <- seq(0, max(x), 0.1)
+y <- y[1:1000]
+lines(y, (lambda * exp(-lambda * x))) # density curve f(x)
+lines(y, lambda * exp(-lambda * x)) # density curve f(x)
+lines(y, lambda * exp(-lambda * x)) # density curve f(x)
+y <- seq(0, max(x), 0.1)
+y <- y[1:1000]
+lines(y, lambda * exp(-lambda * x)) # density curve f(x)
+# If X ~ Exp(delta), then for x > 0 the cdf of X is F_X(x) = 1 - e^(-delta * x).
+# The inverse transformation us F_X^-1(u) = -(1/delta) * log(1 - u). Note that
+# U and 1 - U have the same distribution and it is simpler to set
+# x = -(1/delta) * log(u). To generate a random sample of size n with parameter
+# lambda:
+lambda <- 0.1 # set lambda (mean) constant, i.e. E[X] = 1 / lambda
+x <- -log(runif(n)) / lambda
+hist(x, probability = TRUE, main = expression(
+f(x) == lambda * e ^ {-lambda * x}))
+y <- seq(0, max(x), 0.1)
+y <- y[1:1000]
+lines(y, lambda * exp(-lambda * x)) # density curve f(x)
+x <- -log(runif(n)) / lambda
+hist(x, probability = TRUE, main = expression(
+f(x) == lambda * e ^ {-lambda * x}))
+y <- seq(0, max(x), 0.1)
+y <- y[1:1000]
+lines(y, lambda * exp(-lambda * x)) # density curve f(x)
+x <- (-log(runif(n)) / lambda)
+hist(x, probability = TRUE, main = expression(
+f(x) == lambda * e ^ {-lambda * x}))
+# If X ~ Exp(delta), then for x > 0 the cdf of X is F_X(x) = 1 - e^(-delta * x).
+# The inverse transformation us F_X^-1(u) = -(1/delta) * log(1 - u). Note that
+# U and 1 - U have the same distribution and it is simpler to set
+# x = -(1/delta) * log(u). To generate a random sample of size n with parameter
+# lambda:
+lambda <- 0.5 # set lambda (mean) constant, i.e. E[X] = 1 / lambda
+x <- (-log(runif(n)) / lambda)
+hist(x, probability = TRUE, main = expression(
+f(x) == lambda * e ^ {-lambda * x}))
+hist(x, probability = TRUE, main = expression(
+f(x) == lambda * e ^ {-lambda * x}))
+y <- seq(0, max(x), 0.5)
+y <- y[1:1000]
+lines(y, lambda * exp(-lambda * x)) # density curve f(x)
+lines(y, lambda * exp(-(lambda * x))) # density curve f(x)
+y <- y[1:1000]
+lines(y, lambda * exp(-(lambda * x))) # density curve f(x)
+hist(x, probability = TRUE, main = expression(
+f(x) == lambda * e ^ {-lambda * x}))
+y <- seq(0, max(x), 0.5)
+y <- y[1:1000]
+lines(y, lambda * exp(-(lambda * x))) # density curve f(x)
+y <- seq(0, max(x), 1)
+y <- y[1:1000]
+lines(y, lambda * exp(-(lambda * x))) # density curve f(x)
+# If X ~ Exp(delta), then for x > 0 the cdf of X is F_X(x) = 1 - e^(-delta * x).
+# The inverse transformation us F_X^-1(u) = -(1/delta) * log(1 - u). Note that
+# U and 1 - U have the same distribution and it is simpler to set
+# x = -(1/delta) * log(u). To generate a random sample of size n with parameter
+# lambda:
+lambda <- 0.5 # set lambda (mean) constant, i.e. E[X] = 1 / lambda
+x <- (-log(runif(n)) / lambda)
+hist(x, probability = TRUE, main = expression(
+f(x) == lambda * e ^ {-lambda * x}))
+hist(x, probability = TRUE, main = expression(f(x) == 3 * x ^ 2)) # density hist of sample
+lines(y, 3 * y ^ 2) # density curve f(x)
+y <- seq(0, 1, 0.1)
+lines(y, 3 * y ^ 2) # density curve f(x)
+# Here F_X(x) = 3 for 0 < x < 1, and F_X^1(u) = u^{1/3}. First we generate all n
+# required random uniform numbers as vector u. Then u^{1/3} is a vector of length
+# n containing the sample x_1, ... , x_n.
+n <- 1000
+u <- runif(n)
+x <- u ^ (1 / 3)
+hist(x, probability = TRUE, main = expression(f(x) == 3 * x ^ 2)) # density hist of sample
+y <- seq(0, 1, 0.1)
+lines(y, 3 * y ^ 2) # density curve f(x)
+# Here F_X(x) = 3 for 0 < x < 1, and F_X^1(u) = u^{1/3}. First we generate all n
+# required random uniform numbers as vector u. Then u^{1/3} is a vector of length
+# n containing the sample x_1, ... , x_n.
+n <- 1000
+u <- runif(n)
+x <- u ^ (1 / 3)
+hist(x, probability = TRUE, main = expression(f(x) == 3 * x ^ 2)) # density hist of sample
+y <- seq(0, 1, 0.1)
+lines(y, 3 * y ^ 2) # density curve f(x)
+y <- seq(0, max(x), 0.5)
+y <- y[1:1000]
+lines(y, y * exp(-(y * x))) # density curve f(x)
+# If X ~ Exp(delta), then for x > 0 the cdf of X is F_X(x) = 1 - e^(-delta * x).
+# The inverse transformation us F_X^-1(u) = -(1/delta) * log(1 - u). Note that
+# U and 1 - U have the same distribution and it is simpler to set
+# x = -(1/delta) * log(u). To generate a random sample of size n with parameter
+# lambda:
+lambda <- 0.5 # set lambda (mean) constant, i.e. E[X] = 1 / lambda
+x <- (-log(runif(n)) / lambda)
+hist(x, probability = TRUE, main = expression(
+f(x) == lambda * e ^ {-lambda * x}))
+y <- seq(0, max(x), 0.5)
+y <- y[1:1000]
+lines(y, y * exp(-(y * x))) # density curve f(x)
+x <- (-log(runif(n)) / lambda)
+hist(x, probability = TRUE, main = expression(
+f(x) == lambda * e ^ {-lambda * x}))
+y <- seq(0, max(x), 0.5)
+y <- y[1:1000]
+lines(y, lambda * exp(-lambda * y)) # density curve f(x)
+# If X ~ Exp(delta), then for x > 0 the cdf of X is F_X(x) = 1 - e^(-delta * x).
+# The inverse transformation us F_X^-1(u) = -(1/delta) * log(1 - u). Note that
+# U and 1 - U have the same distribution and it is simpler to set
+# x = -(1/delta) * log(u). To generate a random sample of size n with parameter
+# lambda:
+lambda <- 0.5 # set lambda (mean) constant, i.e. E[X] = 1 / lambda
+x <- (-log(runif(n)) / lambda)
+hist(x, probability = TRUE, main = expression(
+f(x) == lambda * e ^ {-lambda * x}))
+y <- seq(0, max(x), 0.1)
+y <- y[1:1000]
+lines(y, lambda * exp(-lambda * y)) # density curve f(x)
+# If X ~ Exp(delta), then for x > 0 the cdf of X is F_X(x) = 1 - e^(-delta * x).
+# The inverse transformation us F_X^-1(u) = -(1/delta) * log(1 - u). Note that
+# U and 1 - U have the same distribution and it is simpler to set
+# x = -(1/delta) * log(u). To generate a random sample of size n with parameter
+# lambda:
+lambda <- 0.5 # set lambda (mean) constant, i.e. E[X] = 1 / lambda
+x <- (-log(runif(n)) / lambda)
+hist(x, probability = TRUE, main = expression(
+f(x) == lambda * e ^ {-lambda * x}))
+y <- seq(0, max(x), 0.1)
+lines(y, lambda * exp(-lambda * y)) # density curve f(x)
+# If X ~ Exp(delta), then for x > 0 the cdf of X is F_X(x) = 1 - e^(-delta * x).
+# The inverse transformation us F_X^-1(u) = -(1/delta) * log(1 - u). Note that
+# U and 1 - U have the same distribution and it is simpler to set
+# x = -(1/delta) * log(u). To generate a random sample of size n with parameter
+# lambda:
+lambda <- 0.5 # set lambda (mean) constant, i.e. E[X] = 1 / lambda
+x <- (-log(runif(n)) / lambda)
+hist(x, probability = TRUE, main = expression(
+f(x) == lambda * e ^ {-lambda * x}))
+y <- seq(min(x), max(x), 0.1)
+lines(y, lambda * exp(-lambda * y)) # density curve f(x)
+# Methods for Generating Random Variables ---------------------------------
+## The Inverse Transform Method --------------------------------------------
+# The inverse transform method of generating RVs is based on the following
+# well-known result:
+## Theorem 3.1 (Probability Integral Transformation) If X is a continuous random
+# variable with cdf F_X(x), then U = F_X(X) ~ Uniform(0, 1).
+# The inverse transform method of generating RVs applied the probability
+# integral transformation, where the inverse transformation is defined as
+## F_x^-1(u) = inf{x: F_X(x) = u}, 0 < u < 1
+# Hence, if U ~ Uniform(0, 1), then for all xER
+## P(F_X^-1(U) <= x) = P(inf{t: F_X(t) = U} <= x)
+##                   = P(U <= F_X(x))
+##                   = F_U(F_X(x)) = F_X(x),
+# and therefore F_X^-1(u) has the same distribution as X. Thus, to generate a
+# random observation X, first generate a Uniform(0, 1) variate y and deliver the
+# inverse value F_X^-1(u). The method is easy to apply *provided that the inverse
+# density function is easy to compute
+### Example 3.2 -------------------------------------------------------------
+# This example use the inverse method to simulate a random sample from the
+# distribution with density f(x) = 3x^2, 0 < x < 1.
+# Here F_X(x) = x^3 for 0 < x < 1, and F_X^-1(u) = u^{1/3}. First we generate all n
+# required random uniform numbers as vector u. Then u^{1/3} is a vector of length
+# n containing the sample x_1, ... , x_n.
+n <- 1000
+u <- runif(n)
+x <- u ^ (1 / 3)
+hist(x, probability = TRUE, main = expression(f(x) == 3 * x ^ 2)) # density hist of sample
+y <- seq(0, 1, 0.01)
+lines(y, 3 * y ^ 2) # density curve f(x)
+# ... the hist and density plot suggest that the empirical and theoretical
+# distributions approximately agree.
+### Example 3.3 -------------------------------------------------------------
+# (Exponential distribution) This example applied the inverse transform method to
+# generate a random sample from the exponential distribution with mean 1/lambda.
+# If X ~ Exp(lambda), then for x > 0 the cdf of X is F_X(x) = 1 - e^(-lambda * x).
+# The inverse transformation us F_X^-1(u) = -(1/lambda) * log(1 - u). Note that
+# U and 1 - U have the same distribution and it is simpler to set
+# x = -(1/lambda) * log(u). To generate a random sample of size n with parameter
+# lambda:
+lambda <- 0.5 # set lambda (mean) constant, i.e. E[X] = 1 / lambda
+x <- (-log(runif(n)) / lambda)
+hist(x, probability = TRUE, main = expression(
+f(x) == lambda * e ^ {-lambda * x}))
+y <- seq(0, 1, 0.1)
+lines(y, lambda * exp(-lambda * y)) # density curve f(x)
+lambda <- 0.5 # set lambda (mean) constant, i.e. E[X] = 1 / lambda
+x <- (-log(runif(n)) / lambda)
+hist(x, probability = TRUE, main = expression(
+f(x) == lambda * e ^ {-lambda * x}))
+y <- seq(min(x), max(x), 0.1)
+lines(y, lambda * exp(-lambda * y)) # de
+# On average, cn = 6000 iterations (12000 random numbers) will be required for a
+# sample size 1000. In the following simulation below, the counter j for
+# iterations is not necessary, but included to record how many iterations were
+# actually needed to generate the 1000 beta variates:
+n <- 1000
+k <- 0
+j <- 0
+y <- numeric(n)
+while (k < n) {
+u <- runif(1)
+j <- j + 1
+x <- runif(1) # random variate from g
+if (x * (1 - x) > u) {
+# accept sample x:
+k <- k + 1
+y[k] <- x
+}
+}
+j
+# Now we can compare the empirical and theoretical percentiles:
+p <- seq(0.1, 0.9, 0.1)
+Q_hat <- quantile(y, p)
+Q <- qbeta(p, 2, 2)
+se <- sqrt(p * (1 - p)) / (n * dbeta(Q, 2, 2) ^ 2)
+# Below, the sample percentiles (first line) approximately match the Beta(2, 2)
+# percentiles computed by qbeta (second line):
+round(rbind(Q_hat, Q, se), 3)
+# Below, the sample percentiles (first line) approximately match the Beta(2, 2)
+# percentiles computed by qbeta (second line):
+round(rbind(Q_hat, Q, se), 3)
+# On average, cn = 6000 iterations (12000 random numbers) will be required for a
+# sample size 1000. In the following simulation below, the counter j for
+# iterations is not necessary, but included to record how many iterations were
+# actually needed to generate the 1000 beta variates:
+set.seed(41513)
+n <- 1000
+k <- 0
+j <- 0 # counter for accepted samples
+y <- numeric(n)
+while (k < n) {
+u <- runif(1)
+j <- j + 1
+x <- runif(1) # random variate from g
+if (x * (1 - x) > u) {
+# accept sample x:
+k <- k + 1
+y[k] <- x
+}
+}
+j
+# Now we can compare the empirical and theoretical percentiles:
+p <- seq(0.1, 0.9, 0.1)
+Q_hat <- quantile(y, p)
+Q <- qbeta(p, 2, 2)
+se <- sqrt(p * (1 - p)) / (n * dbeta(Q, 2, 2) ^ 2)
+# Below, the sample percentiles (first line) approximately match the Beta(2, 2)
+# percentiles computed by qbeta (second line):
+round(rbind(Q_hat, Q, se), 3)
+# Below, the sample percentiles (first line) approximately match the Beta(2, 2)
+# percentiles computed by qbeta (second line):
+x <- round(rbind(Q_hat, Q, se), 3)
+x
+# Below, the sample percentiles (first line) approximately match the Beta(2, 2)
+# percentiles computed by qbeta (second line):
+round(rbind(Q_hat, Q, se), 3)
+capture.output(round(rbind(Q_hat, Q, se), 3), file = "img/Q_Qhat.png")
+capture.output(round(rbind(Q_hat, Q, se), 3), file = "img/Q_Qhat")
+set.seed(123)
+n <- 1000
+a <- 3
+b <- 2
+u <- rgamma(n, shape = a, rate = 1)
+v <- rgamma(n, shape = b, rate = 1)
+x <- u / (u + v)
+q <- qbeta(ppoints(n), a, b)
+qqplot(q, x, cex = 0.25, xlab = "Beta(3, 2)", ylab = "Sample")
+abline(0, 1)
+git status
+# We develop an example with n = 1000 and \nu = 2 degrees of freedom below.
+n <- 1000
+nu <- 2
+X <- matrix(rnorm(n = n * nu, mean = n, sd = nu)^2) # matrix of sq. normals
+X
+# Then sum the sq. normals across each row of matrix: method 1
+y <- rowSums(X)
+# method 2:
+y_2 <- apply(X, MARGIN = 1, FUN = sum)
+y_1
+# Then sum the sq. normals across each row of matrix:
+# method 1
+y_1 <- rowSums(X)
+y_1
+y_2
+y_1 == y_2
+identical(y_1, y_2)
+mean(y_1)
+mean(y_1^2)
+X <- matrix(rnorm(n = n * nu, mean = n, sd = nu))^2 # matrix of sq. normals
+X
+X <- matrix(rnorm(n = n*nu), nrow = n, ncol = nu)^2 # matrix of sq. normals
+X
+# Then sum the sq. normals across each row of matrix:
+# method 1
+y_1 <- rowSums(X)
+# method 2:
+y_2 <- apply(X, MARGIN = 1, FUN = sum)
+identical(y_1, y_2) # test if same...
+mean(y_1)
+mean(y_1^2)
+# We develop an example with n = 1000 and \nu = 2 degrees of freedom below.
+set.seed(4213)
+n <- 1000
+nu <- 2
+X <- matrix(rnorm(n = n*nu), nrow = n, ncol = nu)^2 # matrix of sq. normals
+# Then sum the sq. normals across each row of matrix:
+# method 1
+y_1 <- rowSums(X)
+# method 2:
+y_2 <- apply(X, MARGIN = 1, FUN = sum)
+identical(y_1, y_2) # test if same...
+mean(y_1)
+mean(y_1^2)
+#### Example: Convolutions and mixtures
+# Let X_1 \sim Gamma(2, 2) and X_2 \sim Gamma(2, 4) be independent. Let's see
+# the visual difference between the convolution S = X_1 + X_2 and mixture
+# F_X(x) = 0.5 * F_{X_1}(x) + 0.5 * F_{X_2}(x):
+n <- 1000
+x_1 <- rgamma(n, 2, 2)
+x_2 <- rgamma(n, 2, 4)
+x_2
+x_1
+s <- x_1 + x_2
+u <- runif(n)
+k <- as.integer(u > 0.5)
+# Plot:
+par(mfccol = c(1, 2))
+# Plot:
+par(mfcol = c(1, 2))
+hist(s, probability = TRUE, xlim = c(0, 5), ylim = c(0, 1))
+hist(x, probability = TRUE, xlim = c(0, 5), ylim = c(0, 1))
+#### Example: Convolutions and mixtures
+# Let X_1 \sim Gamma(2, 2) and X_2 \sim Gamma(2, 4) be independent. Let's see
+# the visual difference between the convolution S = X_1 + X_2 and mixture
+# F_X(x) = 0.5 * F_{X_1}(x) + 0.5 * F_{X_2}(x):
+n <- 1000
+x_1 <- rgamma(n, 2, 2)
+x_2 <- rgamma(n, 2, 4)
+s <- x_1 + x_2 # convolution
+u <- runif(n)
+k <- as.integer(u > 0.5) # vector of 0's and 1's (binary logic)
+x <- k * x_1 + (1 - k) * x_2 # the mixture
+# Plot:
+par(mfcol = c(1, 2))
+hist(s, probability = TRUE, xlim = c(0, 5), ylim = c(0, 1))
+hist(x, probability = TRUE, xlim = c(0, 5), ylim = c(0, 1))
+par(mfcol = c(1, 2)) # restore previous setting
+# the visual difference between the convolution S = X_1 + X_2 and mixture
+# F_X(x) = 0.5 * F_{X_1}(x) + 0.5 * F_{X_2}(x):
+n <- 1000
+x_1 <- rgamma(n, 2, 2)
+x_2 <- rgamma(n, 2, 4)
+s <- x_1 + x_2 # convolution
+u <- runif(n)
+k <- as.integer(u > 0.5) # vector of 0's and 1's (binary logic)
+x <- k * x_1 + (1 - k) * x_2 # the mixture
+# Plot:
+par(mfcol = c(1, 2))
+hist(s, probability = TRUE, xlim = c(0, 5), ylim = c(0, 1))
+hist(x, probability = TRUE, xlim = c(0, 5), ylim = c(0, 1))
+par(mfcol = c(1, 2)) # restore previous setting
+# the visual difference between the convolution S = X_1 + X_2 and mixture
+# F_X(x) = 0.5 * F_{X_1}(x) + 0.5 * F_{X_2}(x):
+n <- 1000
+x_1 <- rgamma(n, 2, 2)
+x_2 <- rgamma(n, 2, 4)
+s <- x_1 + x_2 # convolution
+u <- runif(n)
+k <- as.integer(u > 0.5) # vector of 0's and 1's (binary logic)
+x <- k * x_1 + (1 - k) * x_2 # the mixture
+# Plot:
+par(mfcol = c(1, 2))
+hist(s, probability = TRUE, xlim = c(0, 5), ylim = c(0, 1))
+hist(x, probability = TRUE, xlim = c(0, 5), ylim = c(0, 1))
+par(mfcol = c(1, 2)) # restore previous setting
+# Thus, and efficient way to implement this in R is shown below:
+n <- 5000
+k <- sample(1:5, size = n, replace = TRUE, prob = (1:5) / 15)
+rate <- 1 / k
+x <- rgamma(n = n, shape = 3, rate = rate)
+# Plot the density of the mixture with densities of the compoenents...
+plot(x = density(x),
+xlim = c(0, 40), ylim = c(0, 0.3),
+lwd = 3, xlab = "x", main = "")
+for (i in 1:5) {
+lines(density(rgamma(n = n, shape = 3, rate = 1/i)))
+}
+par(mfcol = c(1, 1)) # restore previous setting
+# Plot the density of the mixture with densities of the compoenents...
+plot(x = density(x),
+xlim = c(0, 40), ylim = c(0, 0.3),
+lwd = 3, xlab = "x", main = "")
+for (i in 1:5) {
+lines(density(rgamma(n = n, shape = 3, rate = 1/i)))
+}
+# Plot the density of the mixture with densities of the compoenents...
+plot(x = density(x), legend = TRUE,
+xlim = c(0, 40), ylim = c(0, 0.3),
+lwd = 3, xlab = "x", main = "")
+for (i in 1:5) {
+lines(density(rgamma(n = n, shape = 3, rate = 1/i)))
+}
+# Plot the density of the mixture with densities of the compoenents...
+plot(x = density(x),
+xlim = c(0, 40), ylim = c(0, 0.3),
+lwd = 3, xlab = "x", main = "Mixture (thick) & Independent Gammas (thin)")
+for (i in 1:5) {
+lines(density(rgamma(n = n, shape = 3, rate = 1/i)))
+}
+# Plot the density of the mixture with densities of the compoenents...
+plot(x = density(x),
+xlim = c(0, 40), ylim = c(0, 0.3),
+lwd = 3, xlab = "x", main = "Mixture (thick) of Independent Gammas (thin)")
+for (i in 1:5) {
+lines(density(rgamma(n = n, shape = 3, rate = 1/i)))
+}

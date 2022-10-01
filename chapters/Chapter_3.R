@@ -345,3 +345,20 @@ for (i in 1:5) {
 # section!
 
 # Multivariate Distributions ----------------------------------------------
+# A d-dimensional multivariate normal requires covariance matrix, since 
+# X ~ N_d(\mu, \Sigma),where \Sigma has entries \sigma_{ij} = Cov(X_i, X_j).
+# One of the ways - there are several - to obtain a covariance matrix is 
+# through Choleski factorization. The Choleski factorization of a real symmetric
+# positive-definite matrix is X = Q^TQ, where Q is an upper triangular matrix.
+# In R, the basic syntax to implement Choleski factorization is chol(X).
+X <- matrix(data = c(1, 0.9, 0.9, 1), nrow = 2)
+# Check is if matyric is symmetric and positive definite:
+X - t(X) ## This should be 0 if A is symmetric
+eigen(X)$values ## These should all be non-negative.
+# Note that if any are 0 then use chol(A,pivot=TRUE)
+
+## Calculate Choleski factorization:
+R <- chol(X)
+# Thus, if correct, XX = R^T%*%R:
+t(R)%*%R
+
