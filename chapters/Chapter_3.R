@@ -356,7 +356,7 @@ for (i in 1:max(k)) {
 # syntax to implement Choleski factorization is chol(X).
 
 # First, we must create a symmetric, positive-definite matrix:
-X <- matrix(data = c(1, 0.9, 0.9, 1), nrow = 2)
+X <- matrix(data = c(0.8, 0.2, 0.2, 0.8), nrow = 2)
 
 # Note that the chol() function does not check if the matrix is symmetric, 
 # but there are some analytic ways to do this:
@@ -368,3 +368,85 @@ eigen(X)$values ## These should all be non-negative.
 R <- chol(X)
 # Thus, if correct, X = R^T%*%R:
 t(R)%*%R
+?chol
+## Choleski function -------------------------------------------------------
+# We can turn the above into a neat R function, which applies Choleski factorisation
+# to generate 200 random observations from a four-dimensional multivariate normal:
+rmvn_Choleski <- function(n, mu, Sigma) {
+ # generate n random vectors from MVN(n, Sigma)
+ # dimension is inferred from mu and Sigma
+ d <- length(mu)
+ Q <- chol(Sigma) # Choleski factorisation of Sigma
+ Z <- matrix(rnorm(n = n * d), nrow = n, ncol = d) # assumes standard normal
+ X <- Z %*% Q + matrix(data = mu, nrow = n, ncol = d, byrow = TRUE)
+ # return computation
+ return(X)
+}
+
+# Using the above function, we can then generate samples according to the same mean
+# and covariance structure as the four-dimensional data from the iris dataset:
+y <- subset(x = iris, Species == "virginica")[, 1:4] # index only first 4 cols
+mu <- colMeans(y)
+Sigma <- cov(y) # where cov(X, Y) = E[(X-E[X]](Y - E[Y])]
+
+# Apply function to generate MVN data with above mean and variance:
+X <- rmvn_Choleski(n = 200, mu = mu, Sigma = Sigma)
+# Visualise bivariate distribution of each pair of marginal distributions
+pairs(X)
+
+# Interesting note: we can standardise a multivariate normal sample by inverting the
+# above procedure; substituting the same mean vector and sample covariance matrix if 
+# the parameters are unknown. The transformed d-dimensional sample then has a zero
+# mean vector and covariance I_d.
+
+# Mixtures of Multivariate Normals ----------------------------------------
+# A multivariate normal mixture is denoted
+
+    # pNd(mu_1, Sigma_1) + (1 - p)N_d(mu_2, Sigma_2)
+
+# where the sampled population is N_d(mu_1, Sigma_1) with probability p, and 
+# N_d(mu_2, Sigma_2) with probability 1 - p. As the mixing parameter p and other 
+# parameters are varied, the MVN mixtures have a wide variety of types and 
+# departures from normality. To generate a sample:
+
+# 1. Generate U ~ Uniform(0, 1)
+# 2. If U <= p generate X from N_d(mu_1, Sigma_1), else from N_d(mu_2, Sigma_2)
+
+# alternatively,
+
+# 1. Generate N ~ Bernoulli(p)
+# 2. If N = 1 generate X using same indicator function as above
+
+# Example function:
+library(MASS) # for mvrnorm
+
+loc_mix_0 <- function(n, p, mu_1, mu_2, Sigma) {
+ # generate sample from BVN location mixture
+ X <- matrix(data = 0, nrow = n, ncol = ncol(Sigma))
+ 
+ for (i in 1:n) {
+  k <- rbinom(n = 1, size = 1, prob = p)
+  
+  # evaluate draw U <= p
+  if (k <= p) {
+   X[i, ] <- mvrnorm(n = 1, mu = mu_1, Sigma = Sigma)
+  } else {
+   X[i, ] <- mvrnorm(n = 1, mu = mu_2, Sigma = Sigma)
+  }
+ }
+ 
+ # return computation
+ return(X)
+}
+
+# Apply function:
+x <- loc_mix_0(n = 1000, p = 0.5, mu_1 = rep(0, 2), mu_2 = 3:4, Sigma = diag(2))
+# visualise marginal distributions of the MVN mixture data:
+r <- range(x) * 1.2
+par(mfrow = c(1, 2))
+for (i in 1:2) {
+ hist(x[, i], xlim = r, ylim = c(0, 0.3), freq = FALSE, 
+      main = "", breaks = seq(-5, 10, 0.5))
+}
+
+# End file ----------------------------------------------------------------
